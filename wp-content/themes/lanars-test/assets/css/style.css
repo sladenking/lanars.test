@@ -73,8 +73,35 @@ main.container {
 .list-item__box {
     padding: 12px 0 12px 16px;
 }
-.list-item__img {
+.list-item__img img {
     object-fit: cover;
+    transition: .3s;
+}
+.list-item__img {
+    height: 100px;
+    width: 200px;
+    overflow: hidden;
+    position: relative;
+}
+.list-item__img:after {
+    opacity: 0;
+    visibility: hidden;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(207,207,227,1) 0%, rgba(0,212,255,1) 100%);
+    transition: .3s;
+}
+.list-item__img:hover img {
+    /*object-fit: none;*/
+    transform: rotate(30deg) scale(1.2);
+}
+.list-item__img:hover:after {
+    opacity: 1;
+    visibility: visible;
 }
 .list-item__main {
     background: #FBC22D;

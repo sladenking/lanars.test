@@ -38,7 +38,9 @@ function comments_plugin ( $content ) {
             ?>
             <li class="list-item">
                 <div class="list-item__main">
-                    <img class="list-item__img" src="<?php the_post_thumbnail_url(array(200, 100))  ?>" alt="<?php the_title(); ?>" width="200" height="100">
+                    <div class="list-item__img">
+                        <img src="<?php the_post_thumbnail_url(array(200, 100))  ?>" alt="<?php the_title(); ?>" width="200" height="100">
+                    </div>
                     <div class="list-item__box">
                         <a class="list-item__title" href="<?php the_permalink(); ?>">
                             <?php the_title(); ?>
