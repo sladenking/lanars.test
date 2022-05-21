@@ -13,7 +13,7 @@
 
 	<footer class="footer">
         <div class="container">
-            site footer
+            Lorem ipsum dolor.
         </div>
 	</footer>
 </div>

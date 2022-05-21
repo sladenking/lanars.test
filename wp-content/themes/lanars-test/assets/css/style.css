@@ -18,25 +18,102 @@ body {
     margin: 0;
     padding: 0;
 }
-
+.container {
+    max-width: 750px;
+    width: 100%;
+}
+.header {
+    background: #FCFCFC;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 40px 0;
+}
+.header-branding {
+    font-size: 32px;
+    line-height: 38px;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+main.container {
+    margin: 40px auto 100px;
+}
+.main-text {
+    text-align: center;
+}
 .list {
     list-style: none;
     padding-left: 0;
     display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
 }
 .list-item {
     border: 1px solid #E2E2E2;
     border-radius: 5px;
-    max-width: 200px;
+    max-width: 350px;
     width: 100%;
     overflow: hidden;
+    display: flex;
+    transition: .35s;
+}
+.list-item:hover {
+    border: 1px solid transparent;
+    box-shadow: 0px 0px 10px rgba(247, 196, 45, 0.6);
 }
 .list-item:not(:last-child) {
-    margin-right: 12px;
+    margin-bottom: 12px;
 }
 .list-item__info {
     padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.list-item__box {
+    padding: 12px 0 12px 16px;
 }
 .list-item__img {
     object-fit: cover;
+}
+.list-item__main {
+    background: #FBC22D;
+}
+.list-item__desc p {
+    -webkit-line-clamp: 5;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    margin: 0;
+}
+.list-item__title {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 700;
+    color: #111;
+    text-decoration: none;
+    transition: .35s;
+}
+.list-item__title:hover {
+    color: #F5f5f5;
+}
+.list-item__additional {
+    color: #a7a7a7;
+    font-size: 12px;
+    line-height: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 28px;
+}
+footer.footer {
+    padding: 100px 40px;
+    background: #212121;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+footer.footer .container {
+    margin: 0 auto;
+    font-weight: 900;
+    color: #fff;
 }

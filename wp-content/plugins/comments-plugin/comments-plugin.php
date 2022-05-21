@@ -32,16 +32,23 @@ function comments_plugin ( $content ) {
     $result = new WP_Query( $args );
     if ( $result-> have_posts() ) : ?>
     <ul class="list">
-        <?php while ( $result->have_posts() ) : $result->the_post(); ?>
+        <?php while ( $result->have_posts() ) : $result->the_post();
+
+//        var_dump(the_date())
+            ?>
             <li class="list-item">
-                <img class="list-item__img" src="<?php the_post_thumbnail_url(array(200, 100))  ?>" alt="<?php the_title(); ?>" width="200" height="100">
+                <div class="list-item__main">
+                    <img class="list-item__img" src="<?php the_post_thumbnail_url(array(200, 100))  ?>" alt="<?php the_title(); ?>" width="200" height="100">
+                    <div class="list-item__box">
+                        <a class="list-item__title" href="<?php the_permalink(); ?>">
+                            <?php the_title(); ?>
+                        </a>
+                    </div>
+                </div>
                 <div class="list-item__info">
-                    <a class="list-item__title" href="<?php the_permalink(); ?>">
-                        <?php the_title(); ?>
-                    </a>
-                    <p class="list-item__desc"><?php the_content();  ?></p>
+                    <div class="list-item__desc"><?php the_content();  ?></div>
                     <div class="list-item__additional">
-                        <span class="list-item__date"><?php the_date(); ?></span>
+                        <span class="list-item__date"><?php echo get_the_date() ?></span>
                         <span class="list-item__comments"><?php comments_number(); ?></span>
                     </div>
                 </div>
