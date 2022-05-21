@@ -17,7 +17,18 @@ get_header();
 ?>
 
 <main class="container">
-    lanars test
+    <div class="main-text">
+        <?php
+        echo get_the_content();
+        ?>
+    </div>
+<!--    <p>-->
+<!--        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu felis sit amet tortor faucibus pellentesque vitae quis nulla. Mauris commodo, arcu id aliquam laoreet, nunc augue pellentesque magna, ut pharetra justo quam a diam. Vestibulum a lectus lorem. Pellentesque nec egestas nisi, vitae pretium turpis. Morbi sit amet fringilla tortor. Nunc sagittis felis ut arcu pellentesque pellentesque. Sed lacinia libero imperdiet enim dignissim, sed iaculis risus pellentesque. Ut sodales lectus vitae tellus gravida ornare.-->
+<!--    </p>-->
+<!---->
+<!--    <div class="comments-list">-->
+    <?php echo do_shortcode("[comments_shortcode]"); ?>
+<!--    </div>-->
 </main>
 
 <?php
