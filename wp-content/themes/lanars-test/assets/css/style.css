@@ -33,11 +33,28 @@ body {
     line-height: 38px;
     text-transform: uppercase;
     font-weight: 900;
+    color: #111;
+    transition: .35s;
+    text-decoration: none;
+}
+a.header-branding:hover {
+    color: #9181C8;
 }
 main.container {
     margin: 40px auto 100px;
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-.main-text {
+main#primary {
+    margin: 40px auto 100px;
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.content > p {
     text-align: center;
 }
 .list {
@@ -58,8 +75,7 @@ main.container {
     transition: .35s;
 }
 .list-item:hover {
-    border: 1px solid transparent;
-    box-shadow: 0px 0px 10px rgba(247, 196, 45, 0.6);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 .list-item:not(:last-child) {
     margin-bottom: 12px;
@@ -71,7 +87,7 @@ main.container {
     justify-content: space-between;
 }
 .list-item__box {
-    padding: 12px 0 12px 16px;
+    padding: 12px 16px;
 }
 .list-item__img img {
     object-fit: cover;
@@ -96,7 +112,6 @@ main.container {
     transition: .3s;
 }
 .list-item__img:hover img {
-    /*object-fit: none;*/
     transform: rotate(30deg) scale(1.2);
 }
 .list-item__img:hover:after {
@@ -104,7 +119,7 @@ main.container {
     visibility: visible;
 }
 .list-item__main {
-    background: #FBC22D;
+    background: #F5F5F5;
 }
 .list-item__desc p {
     -webkit-line-clamp: 5;
@@ -123,7 +138,7 @@ main.container {
     transition: .35s;
 }
 .list-item__title:hover {
-    color: #F5f5f5;
+    color: #9181C8;
 }
 .list-item__additional {
     color: #a7a7a7;
@@ -134,6 +149,28 @@ main.container {
     justify-content: flex-end;
     height: 28px;
 }
+.catalog-link {
+    margin-top: 24px;
+    font-size: 18px;
+    line-height: 24px;
+    transition: .35s;
+    color: #111;
+    text-decoration: none;
+}
+.catalog-link:hover {
+    color: #9181C8;
+}
+.catalog-item {
+    border: 1px solid #E2E2E2;
+    border-radius: 5px;
+    width: 100%;
+    overflow: hidden;
+    transition: .35s;
+    max-width: 500px;
+}
+.catalog-item:not(:last-child) {
+    margin-bottom: 12px;
+}
 footer.footer {
     padding: 100px 40px;
     background: #212121;
@@ -143,4 +180,5 @@ footer.footer .container {
     margin: 0 auto;
     font-weight: 900;
     color: #fff;
+    text-align: center;
 }

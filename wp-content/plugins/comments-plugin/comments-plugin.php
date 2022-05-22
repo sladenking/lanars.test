@@ -19,55 +19,52 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-function comments_plugin ( $content ) {
-
+function comments_plugin ($content) {
+    ob_start();
     $args = array(
         'post_type'=> 'post',
-        'orderby'    => 'ID',
+        'orderby'    => 'comment_count',
         'post_status' => 'publish',
-        'order'    => 'ASC',
+        'order'    => 'DESC',
         'posts_per_page' => -1
     );
 
     $result = new WP_Query( $args );
+
     if ( $result-> have_posts() ) : ?>
-    <ul class="list">
-        <?php while ( $result->have_posts() ) : $result->the_post();
+    <div class="comments-wrapper">
+        <ul class="list">
+            <?php while ( $result->have_posts() ) : $result->the_post();
+                if (get_comments_number() > 0) :
+                    ?>
+                    <li class="list-item">
+                        <div class="list-item__main">
+                            <div class="list-item__img">
+                                <img src="<?php the_post_thumbnail_url(array(200, 100))  ?>" alt="<?php the_title(); ?>" width="200" height="100">
+                            </div>
+                            <div class="list-item__box">
+                                <a class="list-item__title" href="<?php the_permalink(); ?>">
+                                    <?php the_title(); ?>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="list-item__info">
+                            <div class="list-item__desc"><?php the_content();  ?></div>
+                            <div class="list-item__additional">
+                                <span class="list-item__date"><?php echo get_the_date() ?></span>
+                                <span class="list-item__comments"><?php comments_number(); ?></span>
+                            </div>
+                        </div>
+                    </li>
+                <?php
+                endif;
+            endwhile; ?>
+        </ul>
+        <a href="<?php echo get_term_link( 1 ); ?>" class="catalog-link">Просмотреть все записи</a>
+    </div>
+    <?php endif; wp_reset_postdata();
+    return ob_get_clean();
 
-//        var_dump(the_date())
-            ?>
-            <li class="list-item">
-                <div class="list-item__main">
-                    <div class="list-item__img">
-                        <img src="<?php the_post_thumbnail_url(array(200, 100))  ?>" alt="<?php the_title(); ?>" width="200" height="100">
-                    </div>
-                    <div class="list-item__box">
-                        <a class="list-item__title" href="<?php the_permalink(); ?>">
-                            <?php the_title(); ?>
-                        </a>
-                    </div>
-                </div>
-                <div class="list-item__info">
-                    <div class="list-item__desc"><?php the_content();  ?></div>
-                    <div class="list-item__additional">
-                        <span class="list-item__date"><?php echo get_the_date() ?></span>
-                        <span class="list-item__comments"><?php comments_number(); ?></span>
-                    </div>
-                </div>
-            </li>
-        <?php endwhile; ?>
-    </ul>
-    <?php endif; wp_reset_postdata(); ?>
-
-    <?php
-
-
-//    return $content .=
-//        '<img src="'. $info['thumb'] .'" alt="' . $info['title'] . '" width="200" height="100">
-//        <a href="' . $info['link'] . '"><p>' . $info['title'] . '</p></a>
-//        <p>' . $info['desc'] . '</p>
-//        <p>' . $info['date'] . '</p>
-//        <p>' . $info['comments'] . '</p>' ;
 }
 
-add_shortcode('comments_shortcode', 'comments_plugin');
+add_shortcode('comments_list', 'comments_plugin');

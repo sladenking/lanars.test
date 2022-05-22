@@ -23,9 +23,21 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 <header class="header">
-    <div class="header-branding">
-        LANARS Test
-    </div>
+    <?php
+    if ( is_front_page() ) :
+    ?>
+        <div class="header-branding">
+            LANARS Test
+        </div>
+    <?php
+    else :
+    ?>
+        <a href="/" class="header-branding">
+            LANARS Test
+        </a>
+    <?php
+    endif;
+    ?>
 </header>
 
 
